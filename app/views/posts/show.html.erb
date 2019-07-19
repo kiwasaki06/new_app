@@ -6,19 +6,44 @@
 </p>
 
 <p>
+  <strong>Date:</strong>
+  <%= @post.date.strftime("%Y年%-m月%-d日 %a") %>
+</p>
+
+<p>
   <strong>Body:</strong>
   <%= @post.body %>
 </p>
 
 <p>
   <strong>Picture:</strong>
-  <%= @post.picture %>
+  <%= image_tag(@post.picture_url) if @post.picture.present? %>
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @post.date %>
+  <strong>Comments:</strong>
+  <% if @post.comments.any? %>
+    <ul>
+      <% @post.comments.each do |comment| %>
+      <li>
+        <p><%= comment.body %></p>
+        <%= link_to 'destroy', post_comment_path(@post, comment), method: :delete %>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
 </p>
+
+<%= form_for([@post, @post.comments.build]) do |form| %>
+  <div class="field">
+    <strong>New comment:</strong>
+    <%= form.text_area :body, id: :comment_body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

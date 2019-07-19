@@ -1,0 +1,13 @@
+<header>
+    <div class="container">
+      <%= link_to "App name", posts_path %>
+      <nav class="nav">
+        <a class="nav-link">
+          <% if user_signed_in? %>
+          <%= link_to current_user.name, edit_user_registration_path %></a>
+          <% end %>
+          <a class="nav-link"><%= link_to "Edit user", edit_user_registration_path %></a>
+          <a class="nav-link"><%= link_to "Logout", destroy_user_session_path, method: :delete %></a>
+      </nav>
+    </div>
+</header>
