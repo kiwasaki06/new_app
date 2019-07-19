@@ -12,7 +12,7 @@
 
 <p>
   <strong>Picture:</strong>
-  <%= @post.picture %>
+  <%= image_tag(@post.picture_url) if @post.picture.present? %>
 </p>
 
 <p>
