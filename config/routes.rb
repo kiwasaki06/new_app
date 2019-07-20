@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get 'static_pages/about'
 
-  get 'comments/create'
-  get 'comments/destroy'
 
   resources :posts do
     resources :comments, only: [:create, :destroy]
