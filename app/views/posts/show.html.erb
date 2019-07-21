@@ -27,6 +27,9 @@
       <% @post.comments.each do |comment| %>
       <li>
         <p><%= comment.body %></p>
+          <small>
+            <%= current_user.name %>さんのコメント
+          </small>
         <%= link_to 'destroy', post_comment_path(@post, comment), method: :delete %>
       </li>
       <% end %>

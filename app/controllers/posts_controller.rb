@@ -26,11 +26,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-
       if @post.save
         redirect_to posts_path, notice: 'Post was successfully created.'
       else
-        render :new,   notice: 'Failed.'
+        render :new, notice: 'Failed.'
       end
     end
 
@@ -64,6 +63,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :picture, :date)
+      params.require(:post).permit(:title, :body, :picture, :date, :user_id)
     end
 end
