@@ -25,7 +25,7 @@
         <td><%= post.date %></td>
         <td><%= post.body %></td>
         <td><%= image_tag post.picture %></td>
-        <td><%= post.user_id %></td>
+        <td><%= post.user.name %></td>
         <td><%= post.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
